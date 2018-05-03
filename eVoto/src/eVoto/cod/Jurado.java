@@ -1,7 +1,7 @@
 package eVoto.cod;
 
 public class Jurado {
-	
+
 	 // ---------------------------------------------------------------------------------------------------------
     // Atributos Publicos
     // ---------------------------------------------------------------------------------------------------------
@@ -13,14 +13,16 @@ public class Jurado {
      * Atributo que modela los que  votaron por camara
      */
     public final static int SI = 1;
-    
+
+		
+
     /**
-     * Atributo que modela la interacción 
+     * Atributo que modela la interacciï¿½n
      */
     private int interaccion;
-    
-    private  Votante votante; 
-    
+
+    private  Votante votante;
+
     public Jurado (Votante pvotante, int pInteraccion) throws Exception{
         votante = pvotante;
         interaccion = pInteraccion;
@@ -31,30 +33,30 @@ public class Jurado {
             case 1:
                 // Camara
                 break;
-           
+
             default:
-                throw new Exception("Interacción no válida");
+                throw new Exception("Interacciï¿½n no vï¿½lida");
         }
-    }    
+    }
     /**
-     * Método que obtiene un votante
+     * Mï¿½todo que obtiene un votante
      * @return String - votante
      */
     public Votante getVotante() {
         return votante;
     }
     /**
-     * Método que obtiene interacciones
+     * Mï¿½todo que obtiene interacciones
      * @return String - interaccion
      */
     public int getInteraccion() {
         return interaccion;
     }
-    
-    
+
+
     public String toString(){
         return this.interaccion == 0 ? "voto por senado." : (this.interaccion == 1 ? "voto por camara." : ".");
     }
-    
+
 
 }
