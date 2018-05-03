@@ -26,7 +26,7 @@ public class LoginJurado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUsuario;
-	private JPasswordField fcontraseña;
+	private JPasswordField fcontrasenia;
 
 	/**
 	 * Create the frame.
@@ -66,7 +66,7 @@ public class LoginJurado extends JFrame {
 		btningresar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btningresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				char clave[]=fcontraseña.getPassword();
+				char clave[]=fcontrasenia.getPassword();
 				String clavedef=new String(clave);
 
 				if (txtUsuario.getText().equals("Jurado") && clavedef.equals("12345")){
@@ -83,7 +83,7 @@ public class LoginJurado extends JFrame {
 				else 
 	            {
 	                    JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-	                    + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+	                    + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
 	                    JOptionPane.ERROR_MESSAGE);
 	            }
 			}
@@ -97,7 +97,7 @@ public class LoginJurado extends JFrame {
 		btningresar.addKeyListener(new KeyAdapter() {
 			public void keyPressed (KeyEvent ke)
 			{
-				char clave[]=fcontraseña.getPassword();
+				char clave[]=fcontrasenia.getPassword();
 				String clavedef=new String(clave);
 				if (txtUsuario.getText().trim().equals("Jurado") && clavedef.trim().equals("12345")){
 
@@ -113,7 +113,7 @@ public class LoginJurado extends JFrame {
 				else 
 	            {
 	                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-	                + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+	                + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
 	                JOptionPane.ERROR_MESSAGE);
 	            }
 			}
@@ -121,9 +121,9 @@ public class LoginJurado extends JFrame {
 		btningresar.setBounds(142, 206, 87, 31);
 		contentPane.add(btningresar);
 		
-		fcontraseña = new JPasswordField();
-		fcontraseña.setBounds(193, 159, 131, 20);
-		contentPane.add(fcontraseña);
+		fcontrasenia = new JPasswordField();
+		fcontrasenia.setBounds(193, 159, 131, 20);
+		contentPane.add(fcontrasenia);
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {

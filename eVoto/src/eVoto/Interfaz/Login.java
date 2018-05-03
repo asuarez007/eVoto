@@ -30,7 +30,7 @@ public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUsuario;
-	private JPasswordField fcontraseña;
+	private JPasswordField fcontrasenia;
 
 	/**
 	 * Launch the application.
@@ -83,10 +83,10 @@ public class Login extends JFrame {
 		label.setBounds(209, 189, 74, -24);
 		contentPane.add(label);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		lblContraseña.setBounds(72, 150, 87, 14);
-		contentPane.add(lblContraseña);
+		JLabel lblContrasenia = new JLabel("Contrase\u00F1a");
+		lblContrasenia.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		lblContrasenia.setBounds(72, 150, 87, 14);
+		contentPane.add(lblContrasenia);
 		
 		Principal principal = new Principal();
 		
@@ -95,7 +95,7 @@ public class Login extends JFrame {
 		
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				char clave[]=fcontraseña.getPassword();
+				char clave[]=fcontrasenia.getPassword();
 				String clavedef=new String(clave);
 				
 				if (txtUsuario.getText().trim().equals("Administrador") && clavedef.trim().equals("12345")
@@ -113,7 +113,7 @@ public class Login extends JFrame {
 				else 
 	            {
 	                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-	                + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+	                + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
 	                JOptionPane.ERROR_MESSAGE);
 	            }
 			}
@@ -127,7 +127,7 @@ public class Login extends JFrame {
 		btnIngresar.addKeyListener(new KeyAdapter() {
 			public void keyPressed (KeyEvent ke)
 			{
-				char clave[]=fcontraseña.getPassword();
+				char clave[]=fcontrasenia.getPassword();
 				String clavedef=new String(clave);
 				
 				if (ke.getKeyCode() == KeyEvent.VK_TAB)
@@ -139,10 +139,10 @@ public class Login extends JFrame {
 				                JOptionPane.ERROR_MESSAGE);
 					}
 					
-					if (fcontraseña.getText().trim().equals(null) || fcontraseña.getText().trim().length()<0)
+					if (fcontrasenia.getText().trim().equals(null) || fcontrasenia.getText().trim().length()<0)
 					{
 						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-				                + "El campo contraseña es obligatorio", "Campo obligatorio",
+				                + "El campo contraseï¿½a es obligatorio", "Campo obligatorio",
 				                JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -172,19 +172,19 @@ public class Login extends JFrame {
 				else 
 	            {
 	                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-	                + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+	                + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
 	                JOptionPane.ERROR_MESSAGE);
 	                txtUsuario.setText("");
-	                fcontraseña.setText("");
+	                fcontrasenia.setText("");
 	            }
 			}
 		});
 		btnIngresar.setBounds(135, 207, 94, 26);
 		contentPane.add(btnIngresar);
 		
-		fcontraseña = new JPasswordField();
-		fcontraseña.setBounds(174, 149, 109, 26);
-		contentPane.add(fcontraseña);
+		fcontrasenia = new JPasswordField();
+		fcontrasenia.setBounds(174, 149, 109, 26);
+		contentPane.add(fcontrasenia);
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {

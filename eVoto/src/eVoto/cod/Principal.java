@@ -23,13 +23,13 @@ private static final Jurado Jurado = null;
 // Atributos Privados
 // ---------------------------------------------------------------------------------------------------------
 /**
- * Atributo que modela la ruta en el proyecto del archivo de serialización
+ * Atributo que modela la ruta en el proyecto del archivo de serializaciï¿½n
  * de la copa.
  */
 private String serializacionUrl = "src/eVOTO!/Persistencia/eVOTO.ser";
 
 // ---------------------------------------------------------------------------------------------------------
-// Atributos Públicos
+// Atributos Pï¿½blicos
 // ---------------------------------------------------------------------------------------------------------
 /**
  * Lista de votantes que votaran en la mesa.
@@ -71,15 +71,15 @@ public int menuPrincipal() {
 		
        int op = -1;
        while (op != 0) {
-           // Interacción inicial con el usuario
-           String eVoto = JOptionPane.showInputDialog(null, "¡Bienvenido a eVoto sistema de registor de votacion!\n"
+           // Interacciï¿½n inicial con el usuario
+           String eVoto = JOptionPane.showInputDialog(null, "ï¿½Bienvenido a eVoto sistema de registor de votacion!\n"
                    // Opciones
-                   + "A continuación se lista una serie de opciones de las que tendrás que escoger una y escribir el número de la opción en la caja de texto.\n\n"
+                   + "A continuaciï¿½n se lista una serie de opciones de las que tendrï¿½s que escoger una y escribir el nï¿½mero de la opciï¿½n en la caja de texto.\n\n"
                    + "1. Opciones Administrador.\n"
                    + "2. Opciones de Jurados.\n"
                    + "0. Salir",
-                   // Título y tipo de mensaje.
-                   "Menú principal", JOptionPane.QUESTION_MESSAGE);
+                   // Tï¿½tulo y tipo de mensaje.
+                   "Menï¿½ principal", JOptionPane.QUESTION_MESSAGE);
            op = Integer.parseInt(eVoto);
            switch (op) {
                case 1:
@@ -111,8 +111,8 @@ public void menuAdministrador() {
                 + "6. Eliminar Votante.\n"
                 + "7. Listar Votantes Registrados"
                 + "0. Salir",
-                // Título y tipo de mensaje.
-                "Menú del Administrador", JOptionPane.QUESTION_MESSAGE);
+                // Tï¿½tulo y tipo de mensaje.
+                "Menï¿½ del Administrador", JOptionPane.QUESTION_MESSAGE);
         op = Integer.parseInt(selvotantes);
         switch (op) {
         
@@ -123,10 +123,10 @@ public void menuAdministrador() {
            
            String cedulaVotante = JOptionPane.showInputDialog(null,
                    "Introduce la cedula del votante: ",
-                   "Creación de votante",
+                   "Creaciï¿½n de votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (cedulaVotante == null || cedulaVotante.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
                
            }
@@ -134,42 +134,42 @@ public void menuAdministrador() {
            try {
         	   cedulaNAVotante = Integer.parseInt(cedulaVotante);
            } catch (Exception ex) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
            String nombreVotante = JOptionPane.showInputDialog(null,
                    "Introduce el nombre del votante: ",
-                   "Creación de votante",
+                   "Creaciï¿½n de votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (nombreVotante == null || nombreVotante.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
 
            String apellidoVotante = JOptionPane.showInputDialog(null,
                    "Introduce el apellido del votante: ",
-                   "Creación de votante",
+                   "Creaciï¿½n de votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (apellidoVotante == null || apellidoVotante.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
            
            String sexoVotante = JOptionPane.showInputDialog(null,
-                   "Introduce los partidos pitados del nuevo árbitro: ",
-                   "Creación de árbitro",
+                   "Introduce los partidos pitados del nuevo ï¿½rbitro: ",
+                   "Creaciï¿½n de ï¿½rbitro",
                    JOptionPane.INFORMATION_MESSAGE);
            if ( sexoVotante== null || sexoVotante.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
           
 
-           Votante nuevo = new Votante(cedulaNAVotante, nombreVotante, apellidoVotante, sexoVotante);
+           Votante nuevo = new Votante(String.valueOf(cedulaNAVotante), nombreVotante, apellidoVotante, sexoVotante);
 
            votantes.add(nuevo);
 
-           JOptionPane.showMessageDialog(null, "¡Votante creado exitosamente!");
+           JOptionPane.showMessageDialog(null, "ï¿½Votante creado exitosamente!");
 
            break;
            
@@ -178,10 +178,10 @@ public void menuAdministrador() {
             Votante votante2 = this.seleccionarVotante();
             String CedulaVotante = JOptionPane.showInputDialog(null,
                     "Introduce la cedula del votante: ",
-                    "Edición del votante",
+                    "Ediciï¿½n del votante",
                     JOptionPane.INFORMATION_MESSAGE);
             if (CedulaVotante == null || CedulaVotante.trim().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                 break;
             }
             
@@ -189,7 +189,7 @@ public void menuAdministrador() {
             try {
          	   CedulaNAVotante = Integer.parseInt(CedulaVotante);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                 break;
             }
         
@@ -199,10 +199,10 @@ public void menuAdministrador() {
            Votante votante3 = this.seleccionarVotante();
            String nuevoNombre = JOptionPane.showInputDialog(null,
                    "Introduce el nombre del Votanter: ",
-                   "Edición del votante",
+                   "Ediciï¿½n del votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (nuevoNombre == null || nuevoNombre.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
            votante3.setNombre(nuevoNombre);
@@ -212,10 +212,10 @@ public void menuAdministrador() {
            Votante votante4 = this.seleccionarVotante();
            String nuevoApellido = JOptionPane.showInputDialog(null,
                    "Introduce el apellido del votante: ",
-                   "Edición del votante",
+                   "Ediciï¿½n del votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (nuevoApellido == null || nuevoApellido.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
            votante4.setApellido(nuevoApellido);
@@ -225,10 +225,10 @@ public void menuAdministrador() {
           Votante votante5 = this.seleccionarVotante();
            String nuevosexo = JOptionPane.showInputDialog(null,
                    "Introduce el sexo del votante: ",
-                   "Edición del votante",
+                   "Ediciï¿½n del votante",
                    JOptionPane.INFORMATION_MESSAGE);
            if (nuevosexo == null || nuevosexo.trim().equalsIgnoreCase("")) {
-               JOptionPane.showMessageDialog(null, "Opción no válida");
+               JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                break;
            }
            votante5.setSexo(nuevosexo);
@@ -241,7 +241,7 @@ public void menuAdministrador() {
                          "Eliminar el votante",
                          JOptionPane.INFORMATION_MESSAGE);
         		 if (Eliminarcedula == null || Eliminarcedula.trim().equalsIgnoreCase("")) {
-                     JOptionPane.showMessageDialog(null, "Opción no válida");
+                     JOptionPane.showMessageDialog(null, "Opciï¿½n no vï¿½lida");
                      break;
                  }
         		 int EliminarNAcedula = -1;
@@ -283,8 +283,8 @@ public void menuJurados(){
 	                + "3. Contar Votos.\n"
 	                + "4. Listar ciudadanos que votaron.\n"
 	                + "0. Salir",
-	                // Título y tipo de mensaje.
-	                "Menú de Jurados", JOptionPane.QUESTION_MESSAGE);
+	                // Tï¿½tulo y tipo de mensaje.
+	                "Menï¿½ de Jurados", JOptionPane.QUESTION_MESSAGE);
 	        op = Integer.parseInt(selvotantes);
 	        switch (op) {
 	        
@@ -301,20 +301,20 @@ public void menuJurados(){
                    }
                    Votante votanteSeleccionado = this.seleccionarVotante();
 
-                   String interSeleccionada = JOptionPane.showInputDialog(null, "Selecciona una interacción : \n"
+                   String interSeleccionada = JOptionPane.showInputDialog(null, "Selecciona una interacciï¿½n : \n"
                            + "1. Camara.\n"
                            + "2. Senado.\n",
                           
-                           "Selecciona la interacción");
+                           "Selecciona la interacciï¿½n");
                    try {
                        VotoRegistro = Integer.parseInt(interSeleccionada);
                        Jurado nuevaInteraccion = new Jurado(votanteSeleccionado, VotoRegistro);
 
                        this.interacciones.add(nuevaInteraccion);
 
-                       JOptionPane.showMessageDialog(null, "¡Interacción registrada exitosamente!");
+                       JOptionPane.showMessageDialog(null, "ï¿½Interacciï¿½n registrada exitosamente!");
                    } catch (Exception e) {
-                       JOptionPane.showMessageDialog(null, "Ocurrió un problema al intentar guardar la interacción.");
+                       JOptionPane.showMessageDialog(null, "Ocurriï¿½ un problema al intentar guardar la interacciï¿½n.");
                        System.out.println(e.getMessage());
                        break;
                    }
@@ -346,7 +346,7 @@ public void menuJurados(){
 
 
 /**
- * Método que muestra la lista de los votantes registrados para que el usuario los seleccione
+ * Mï¿½todo que muestra la lista de los votantes registrados para que el usuario los seleccione
  * 
  */
 private Votante seleccionarVotante() {
@@ -358,7 +358,7 @@ private Votante seleccionarVotante() {
         for (int i = 0; i < votante.size(); i++) {
             message += (i + 1) + ". " + votante.get(i).getCedula() + "\n";
         }
-        String mesa = JOptionPane.showInputDialog(null, message, "Selección del votante", JOptionPane.QUESTION_MESSAGE);
+        String mesa = JOptionPane.showInputDialog(null, message, "Selecciï¿½n del votante", JOptionPane.QUESTION_MESSAGE);
 
         try {
             return (Votante) votante.get(Integer.parseInt(mesa) - 1);
@@ -399,7 +399,7 @@ private ArrayList<Jurado> bucsarInteraccionesPorJugador(Votante votante) {
 // Main
 // ---------------------------------------------------------------------------------------------------------
 /**
- * Método principal, es la entrada al momento de correr el proyecto.
+ * Mï¿½todo principal, es la entrada al momento de correr el proyecto.
  *
  * @param args
  */
