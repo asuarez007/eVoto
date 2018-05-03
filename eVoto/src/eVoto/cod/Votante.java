@@ -20,6 +20,10 @@ public class Votante {
      */
     protected String sexo;
 
+    public Votante(){
+        
+    }
+    
     /**
      * Constructor de un votante 
      * @param cedula - cedula del votante
@@ -27,6 +31,7 @@ public class Votante {
      * @param pApellido -String, apellido del votante
      * @param pSexo -String, sexo del votante
      */
+    
     public Votante(String Cedula,String pNombre, String pApellido, String pSexo) {
         this.cedula = Cedula;
     	this.nombre = pNombre;
@@ -34,7 +39,7 @@ public class Votante {
         this.sexo = pSexo;
     }
     /**
-     * Método que obtiene la cedula del votante /
+     * Mï¿½todo que obtiene la cedula del votante /
      * @param txtCedula **
      * @return icedula -cedula del votante
      */
@@ -42,7 +47,7 @@ public class Votante {
         return cedula;
     }
     /**
-     * Método que cambia la cedula del votante
+     * Mï¿½todo que cambia la cedula del votante
      * @param cedula - String no nulo .
      */
     public void setCedula(String cedula) {
@@ -51,42 +56,42 @@ public class Votante {
    
     
      /**
-     * Método que obtiene el nombre del votante
+     * Mï¿½todo que obtiene el nombre del votante
      * @return nombre - nombre del Votante
      */
     public String getNombre() {
         return nombre;
     }
     /**
-     * Método que cambia el nombre del votante
+     * Mï¿½todo que cambia el nombre del votante
      * @param nombre - String no nulo .
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     /**
-     * Método que obtiene el apellido del votante
+     * Mï¿½todo que obtiene el apellido del votante
      * @return apellido - apellido del votante
      */
     public String getApellido() {
         return apellido;
     }
     /**
-     * Método que cambia el el apellido del votante
+     * Mï¿½todo que cambia el el apellido del votante
      * @param apellido - String no nulo .
      */
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
      /**
-     * Método que obtiene el sexo del votante
+     * Mï¿½todo que obtiene el sexo del votante
      * @return sexo- sexo del votante
      */
     public String getSexo() {
         return sexo;
     }
      /**
-     * Método que cambia el sexo del votante
+     * Mï¿½todo que cambia el sexo del votante
      * @param sexo - String no nulo .
      */
     public void setSexo(String sexo) {
