@@ -105,25 +105,6 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 login();
-//                char clave[] = fcontrasenia.getPassword();
-//                String clavedef = new String(clave);
-//
-//                if (txtUsuario.getText().trim().equals("Administrador") && clavedef.trim().equals("12345")
-//                        || txtUsuario.getText().trim().equals("Jurado") && clavedef.trim().equals("12345")) {
-//
-//                    JOptionPane.showMessageDialog(null, "Bienvenido\n"
-//                            + "Has ingresado satisfactoriamente al sistema", "Mensaje de bienvenida",
-//                            JOptionPane.INFORMATION_MESSAGE);
-//                    Login login = new Login();
-//                    login.setDefaultCloseOperation(HIDE_ON_CLOSE);
-//
-//                    Inadministrador nuevoAdmin = new Inadministrador();
-//                    nuevoAdmin.setVisible(true);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-//                            + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
-//                            JOptionPane.ERROR_MESSAGE);
-//                }
             }
         });
 
@@ -197,7 +178,7 @@ public class Login extends JFrame {
 
         } else {
             JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-                    + "Por favor ingrese un usuario y/o contraseï¿½a correctos", "Acceso denegado",
+                    + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
                     JOptionPane.ERROR_MESSAGE);
             txtUsuario.setText("");
             fcontrasenia.setText("");

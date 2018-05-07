@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
@@ -22,8 +23,9 @@ import java.util.ArrayList;
 
 public class Ijurado extends JFrame {
 
-    //private JFrame frame;
     private JPanel contentPane;
+    private RegistroVoto registroVoto;
+    private Inadministrador inadministrador;
 
     public ArrayList<Votante> listaVotantes;
 
@@ -71,7 +73,33 @@ public class Ijurado extends JFrame {
         JButton btnRegistraVoto = new JButton("Registrar voto");
         btnRegistraVoto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            	dispose();
+            	registroVoto = new RegistroVoto(listaVotantes);
+            	registroVoto.setListaVotantes(listaVotantes);
+            	
+            	String documento = JOptionPane.showInputDialog(null,"Ingrese el numero de cedula a registrar");
+            	
+            	for (Votante votante : listaVotantes)
+            	{
+	            	if (votante.getCedula().equals(documento)){
+		            	registroVoto.setVisible(true);
+		            	registroVoto.setListaVotantes(listaVotantes);
+	            	}
+	            	else
+	            	{
+	        		JOptionPane.showMessageDialog(null, "El numero de documento " +documento+ " no esta registrado","Error en consulta",JOptionPane.ERROR_MESSAGE);
+	            		
+	            		Ijurado ijurado = new Ijurado(listaVotantes);
+	            		ijurado.setVisible(true);
+	            		//inadministrador = new Inadministrador(lista);
+	            		//inadministrador.setVisible(true);
+	            		break;
+	            		
+	        			//Login login = new Login();
+	        			//dispose();
+	        			//login.setVisible(true);
+	            	}
+            	}
             }
         });
         btnRegistraVoto.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -80,7 +108,20 @@ public class Ijurado extends JFrame {
 
         JButton btnContarVotos = new JButton("Contar Votos");
         btnContarVotos.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {            	
+            	
+            	if (listaVotantes != null && listaVotantes.isEmpty()){
+	            	
+	            	JOptionPane.showMessageDialog(null, "Total de votos registrados: " +registroVoto.totalVotos());
+	            	System.out.println(registroVoto.totalVotos());
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "No existen votantes inscritos","Error en consulta",JOptionPane.ERROR_MESSAGE);
+        			Login login = new Login();
+        			dispose();
+        			login.setVisible(true);
+            	}
             }
         });
         btnContarVotos.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -90,6 +131,22 @@ public class Ijurado extends JFrame {
         JButton btnListarVotos = new JButton("Listar Votos");
         btnListarVotos.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnListarVotos.setBounds(239, 195, 155, 30);
+        btnListarVotos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	if (listaVotantes != null && !listaVotantes.isEmpty()){
+	            	registroVoto.setVisible(true);
+	            	registroVoto.setListaVotantes(listaVotantes);
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "No existen votantes inscritos","Error en consulta",JOptionPane.ERROR_MESSAGE);
+        			Login login = new Login();
+        			dispose();
+        			login.setVisible(true);
+            	}
+            }
+        });
         contentPane.add(btnListarVotos);
 
         JLabel lblAdministrarVotos = new JLabel("ADMINISTRAR VOTOS");
@@ -115,6 +172,14 @@ public class Ijurado extends JFrame {
         btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnSalir.setBounds(239, 238, 155, 31);
         contentPane.add(btnSalir);
+    }
+    
+    public ArrayList<Votante> getListaVotantes() {
+        return listaVotantes;
+    }
+    
+    public void setListaVotantes(ArrayList<Votante> listaVotantes) {
+        this.listaVotantes = listaVotantes;
     }
 
 }

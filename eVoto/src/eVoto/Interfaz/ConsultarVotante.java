@@ -57,9 +57,7 @@ public class ConsultarVotante extends JFrame {
         txtconsultar.setBounds(230, 90, 121, 20);
         contentPane.add(txtconsultar);
         txtconsultar.setColumns(10);
-
-        Principal principal = new Principal();
-
+        
         JButton btnNewButton = new JButton("Buscar");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

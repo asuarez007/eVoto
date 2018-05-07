@@ -23,6 +23,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.PrimitiveIterator;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -34,7 +36,6 @@ public class RegistroVotantes extends JFrame {
     private JTextField txtApellido;
     private JTextField txtCedula;
     private ButtonGroup botones = new ButtonGroup();
-    private String documento;
     
     private ArrayList<Votante> listaVotantes;
     private Votante votanteSeleccionado;
@@ -48,6 +49,8 @@ public class RegistroVotantes extends JFrame {
     private JButton btnEliminar;
     
     private Inadministrador inadministrador;
+    private RegistroVoto registroVoto;
+    private String cedula;
 
     /**
      * Create the frame.
@@ -58,9 +61,20 @@ public class RegistroVotantes extends JFrame {
         listaVotantes = lista;
         inidializarInterfaz();
         inadministrador = new Inadministrador(lista);
+        //registroVoto = new RegistroVoto(lista);
         btnRegistrar.setVisible(true);
         
     }
+    
+    public boolean Isnumber(String cedula) {
+		try {
+			this.cedula = cedula;
+			Integer.parseInt(cedula);
+			return true;
+		}catch (NumberFormatException nfe) {
+		return false;
+		}
+	}
 
     /**
      *
@@ -75,7 +89,7 @@ public class RegistroVotantes extends JFrame {
         
         listaVotantes = lista;
         
-        setTitle("ACTUALIZAR INFORMACIÓN VOTANTE");
+        setTitle("ACTUALIZAR INFORMACION VOTANTE");
         System.out.println("Accion a realizar : " + accion);
         votanteSeleccionado = votante;
         
@@ -98,7 +112,7 @@ public class RegistroVotantes extends JFrame {
             btnEditar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     
-                    String cedula = txtCedula.getText();
+                    cedula = txtCedula.getText();
                     String nombre = txtNombre.getText();
                     String apellido = txtApellido.getText();
                     String sexo = null;
@@ -116,7 +130,7 @@ public class RegistroVotantes extends JFrame {
                     
                     listaVotantes.set(index, votanteSeleccionado);
                     
-                    JOptionPane.showMessageDialog(null, "Actualización exitoso\n" + votanteSeleccionado.toString());
+                    JOptionPane.showMessageDialog(null, "Actualizacion exitosa\n" + votanteSeleccionado.toString());
 
                     //retornar a la pantalla de login para consultar y registrar el voto
                     dispose();
@@ -233,35 +247,9 @@ public class RegistroVotantes extends JFrame {
         
         
         btnRegistrar = new JButton("Registrar");
-        btnRegistrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                
-                String cedula = txtCedula.getText();
-                String nombre = txtNombre.getText();
-                String apellido = txtApellido.getText();
-                String sexo = null;
-                Votante votante = new Votante();
-                
-                if (rdbMasculino.isSelected()) {
-                    sexo = "Masculino";
-                } else if (rdbFemenino.isSelected()) {
-                    sexo = "Femenino";
-                }
-                
-                votante.setCedula(cedula);
-                votante.setNombre(nombre);
-                votante.setApellido(apellido);
-                votante.setSexo(sexo);
-                
-                listaVotantes.add(votante);
-                
-                JOptionPane.showMessageDialog(null, "Ingreso exitoso\n" + votante.toString());
-
-                //retornar a la pantalla de login para consultar y registrar el voto
-                dispose();
-                inadministrador.setVisible(true);
-                inadministrador.setListaVotantes(listaVotantes);
-                
+        btnRegistrar.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+            	Registrar();   
             }
         });
         btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -294,6 +282,49 @@ public class RegistroVotantes extends JFrame {
         btnEliminar.setBounds(136, 300, 100, 23);
         btnEliminar.setVisible(false);
         contentPane.add(btnEliminar);
+        
+    }
+    
+    public void Registrar()
+    {
+    	cedula = txtCedula.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String sexo = null;
+        Votante votante = new Votante();
+        
+        if(!Isnumber(cedula)) 
+        {                                                     
+        	JOptionPane.showMessageDialog(null,"El numero de documento debe ser formato numerico","Error de formato",JOptionPane.ERROR_MESSAGE);
+	    }
+        
+        if (rdbMasculino.isSelected()) {
+            sexo = "Masculino";
+        } else if (rdbFemenino.isSelected()) {
+            sexo = "Femenino";
+        }
+        
+        votante.setCedula(cedula);
+        votante.setNombre(nombre);
+        votante.setApellido(apellido);
+        votante.setSexo(sexo);
+        
+        if (Isnumber(cedula))
+        {
+        	listaVotantes.add(votante);
+        	JOptionPane.showMessageDialog(null, "Ingreso exitoso\n" + votante.toString());
+        }
+        else
+        {
+        	JOptionPane.showMessageDialog(null,"Error en el ingreso de datos del votante","Error de formato",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        //retornar a la pantalla de login para consultar y registrar el voto
+        dispose();
+        //registroVoto.setVisible(true);
+        //registroVoto.setListaVotantes(listaVotantes);
+        inadministrador.setVisible(true);
+        inadministrador.setListaVotantes(listaVotantes);
         
     }
     
